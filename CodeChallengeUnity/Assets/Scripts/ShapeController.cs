@@ -11,11 +11,32 @@ namespace CodeChallenge
         public float DoubleClickWindow;
         [Header("References")]
         public Animator Animator;
+        public AudioSource AudioSource;
         public List<Shape> Shapes;
+        [Header("SFX")]
+        public AudioClip Bark;
+        public AudioClip Moo;
 
         [SerializeField]
+        [Header("Debugging")]
         private Shape _currentShape;
         private bool _allowDoubleClick = false;
+
+        public void SwitchShape(ShapeType shapeType)
+        {
+            Shape shape = Shapes.Find(x => x.ShapeType.Equals(shapeType));
+            if (shape == null)
+            {
+                Debug.LogError($"Could not find shape type {shapeType}");
+            }
+            else
+            {
+                _currentShape.gameObject.SetActive(false);
+                shape.gameObject.SetActive(true);
+                _currentShape = shape;
+                SetShapeColor();
+            }
+        }
 
 
         private void Start()
@@ -70,6 +91,7 @@ namespace CodeChallenge
         {
             Debug.Log("Double click!");
             Animator.Play("DoubleClick");
+            PlaySfx();
         }
 
         private void SetShapeColor()
@@ -77,19 +99,15 @@ namespace CodeChallenge
             _currentShape.SpriteRenderer.color = Util.GenerateRandomColor();
         }
 
-        public void SwitchShape(ShapeType shapeType)
+        private void PlaySfx()
         {
-            Shape shape = Shapes.Find(x => x.ShapeType.Equals(shapeType));
-            if(shape == null)
+            if(UnityEngine.Random.Range(0,4) <= 2)
             {
-                Debug.LogError($"Could not find shape type {shapeType}");
+                AudioSource.PlayOneShot(Bark);
             }
             else
             {
-                _currentShape.gameObject.SetActive(false);
-                shape.gameObject.SetActive(true);
-                _currentShape = shape;
-                SetShapeColor();
+                AudioSource.PlayOneShot(Moo);
             }
         }
     }
