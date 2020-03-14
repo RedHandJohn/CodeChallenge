@@ -48,7 +48,7 @@ namespace CodeChallenge
             SetShapeColor();
         }
 
-#if   (UNITY_ANDROID || UNITY_IOS)
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
         private void Update()
         {
             if(Input.touchCount > 0)
