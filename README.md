@@ -6,17 +6,20 @@ The first sentence in the Code Challenge pdf confused me a little bit. It reads 
 Now did this mean I was supposed to draw a sprite of a hexagon and import it in Unity or was I supposed to generate a hexagon inside Unity?
 I wasn't sure so I did both. Each implementation is in a different scene and the "Switch Scene" button can be used to switch between them.
 
-#Builds
+<h2>Builds</h2>
+
 The builds are found in the Builds directory. I do not own a Mac so the only builds I put out are:
 - One Windows Desktop build
 - One Android build
 
-#General stuff
+<h2>General stuff</h2>
+
 The ShapeController is responsible for rendering the shape, animating it, registering taps on it and it also plays a couple of beautiful sound effects.
 All the UI is placed under the Canvas object.
 The Manager is responsible for handling UI input.
 
-#Sprite implementation
+<h2>Sprite implementation</h2>
+
 I considered this the default implementation so the Unity project is structured around it.
 Open the scene in Assets/Scenes/MainScene and enter Play mode to run it. It's also the default scene opened when you run either of the builds.
 
@@ -25,7 +28,8 @@ I am perfectly aware that I could have done this entire thing on the UI but I ha
 Each shape has its own sprite and its own polygon collider for precise input. 
 The shapes are packed in prefabs and are toggled on/off based on the user's interaction with the left hand side buttons.
 
-#Generated Mesh implementation
+<h2>Generated Mesh implementation</h2>
+
 Open the scene in Assets/GeneratedShapes/Scenes and enter Play mode to run it. It can also be accessed by clicking the "Switch Scene" button.
 
 I made this one rather hastily to be perfectly honest.
