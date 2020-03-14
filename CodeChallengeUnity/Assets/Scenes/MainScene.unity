@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 1069183046}
   - component: {fileID: 1069183045}
   - component: {fileID: 1069183047}
+  - component: {fileID: 1069183048}
   m_Layer: 0
   m_Name: ShapeController
   m_TagString: Untagged
@@ -317,6 +318,7 @@ MonoBehaviour:
   - {fileID: 2704422543092824197}
   - {fileID: 6185490296873101873}
   - {fileID: 5439269685358300620}
+  Animator: {fileID: 1069183048}
   _currentShape: {fileID: 7578040988834068734}
 --- !u!4 &1069183046
 Transform:
@@ -357,6 +359,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1069183048
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069183044}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb795c65d30d18a43804c55ea2491229, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1106497685
 GameObject:
   m_ObjectHideFlags: 0

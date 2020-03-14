@@ -10,6 +10,7 @@ namespace CodeChallenge
         [Tooltip("Double Click Window for mouse input. Not used for mobile devices")]
         public float DoubleClickWindow;
         [Header("References")]
+        public Animator Animator;
         public List<Shape> Shapes;
 
         [SerializeField]
@@ -19,7 +20,7 @@ namespace CodeChallenge
 
         private void Start()
         {
-            _currentShape.SpriteRenderer.color = GenerateRandomColor();
+            SetShapeColor();
         }
 
 #if  !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
@@ -65,16 +66,12 @@ namespace CodeChallenge
         private void OnDoubleClick()
         {
             Debug.Log("Double click!");
-            _currentShape.SpriteRenderer.color = GenerateRandomColor();
+            Animator.Play("DoubleClick");
         }
 
-        private Color GenerateRandomColor()
+        private void SetShapeColor()
         {
-            float r = UnityEngine.Random.Range(0f, 1f);
-            float g = UnityEngine.Random.Range(0f, 1f);
-            float b = UnityEngine.Random.Range(0f, 1f);
-
-            return new Color(r, g, b);
+            _currentShape.SpriteRenderer.color = Util.GenerateRandomColor();
         }
 
         public void SwitchShape(ShapeType shapeType)
@@ -89,7 +86,7 @@ namespace CodeChallenge
                 _currentShape.gameObject.SetActive(false);
                 shape.gameObject.SetActive(true);
                 _currentShape = shape;
-                _currentShape.SpriteRenderer.color = GenerateRandomColor();
+                SetShapeColor();
             }
         }
     }
