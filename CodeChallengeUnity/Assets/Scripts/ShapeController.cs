@@ -9,17 +9,21 @@ namespace CodeChallenge
         [Header("Configuration")]
         [Tooltip("Double Click Window for mouse input. Not used for mobile devices")]
         public float DoubleClickWindow;
+
         [Header("References")]
+        public Camera MainCamera;
         public Animator Animator;
         public AudioSource AudioSource;
         public List<Shape> Shapes;
+
         [Header("SFX")]
         public AudioClip Bark;
         public AudioClip Moo;
 
-        [SerializeField]
         [Header("Debugging")]
+        [SerializeField]
         private Shape _currentShape;
+
         private bool _allowDoubleClick = false;
 
         public void SwitchShape(ShapeType shapeType)
@@ -44,18 +48,20 @@ namespace CodeChallenge
             SetShapeColor();
         }
 
-#if  !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
+#if   (UNITY_ANDROID || UNITY_IOS)
         private void Update()
         {
-            if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && Input.GetTouch(0).tapCount == 2)
+            if(Input.touchCount > 0)
             {
-                Vector2 raw = Input.GetTouch(0).position;
-                Vector3 screenToWorldSpace = Camera.main.ScreenToWorldPoint(raw);
-                Vector3 screenToViewport = Camera.main.ScreenToViewportPoint(raw);
-                RaycastHit2D raycastHit = Physics2D.Raycast(screenToWorldSpace, Vector2.zero);
-                if(raycastHit.collider != null && CompareTag(raycastHit.collider.tag))
+                Touch touch = Input.GetTouch(0);
+                if(touch.phase == TouchPhase.Began && touch.tapCount == 2)
                 {
-                    OnDoubleClick();
+                    Vector3 screenToWorldSpace = MainCamera.ScreenToWorldPoint(touch.position);
+                    RaycastHit2D raycastHit = Physics2D.Raycast(screenToWorldSpace, Vector2.zero);
+                    if (raycastHit.collider != null && CompareTag(raycastHit.collider.tag))
+                    {
+                        OnDoubleClick();
+                    }
                 }
             }
         }
