@@ -3,13 +3,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace CodeChallenge
+namespace CodeChallenge.GeneratedShapes
 {
     public class Manager : MonoBehaviour
     {
         [Header("References")]
         public ShapeController Shape;
-        public GameObject MaskedImage;
         public TextMeshProUGUI TopText;
 
         [Header("Texts")]
@@ -42,11 +41,6 @@ namespace CodeChallenge
             }
         }
 
-        public void OnMaskedImageToggle(bool toggle)
-        {
-            MaskedImage.SetActive(toggle);
-        }
-
         public void OnQuitButtonClicked()
         {
 #if !UNITY_EDITOR
@@ -56,7 +50,7 @@ namespace CodeChallenge
 
         public void OnSwitchSceneButtonClicked()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
     }
 }

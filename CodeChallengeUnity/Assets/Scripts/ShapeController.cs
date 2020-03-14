@@ -58,7 +58,7 @@ namespace CodeChallenge
                 {
                     Vector3 screenToWorldSpace = MainCamera.ScreenToWorldPoint(touch.position);
                     RaycastHit2D raycastHit = Physics2D.Raycast(screenToWorldSpace, Vector2.zero);
-                    if (raycastHit.collider != null && CompareTag(raycastHit.collider.tag))
+                    if (raycastHit.collider?.tag == "Shape")
                     {
                         OnDoubleClick();
                     }
