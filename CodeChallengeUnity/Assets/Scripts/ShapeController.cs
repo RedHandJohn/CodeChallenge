@@ -89,6 +89,7 @@ namespace CodeChallenge
                 _currentShape.gameObject.SetActive(false);
                 shape.gameObject.SetActive(true);
                 _currentShape = shape;
+                _currentShape.SpriteRenderer.color = GenerateRandomColor();
             }
         }
     }
