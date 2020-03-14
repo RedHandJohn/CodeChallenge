@@ -1,22 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace CodeChallenge
 {
     public class ShapeController : MonoBehaviour
     {
+        [Header("Configuration")]
+        [Tooltip("Double Click Window for mouse input. Not used for mobile devices")]
         public float DoubleClickWindow;
-        public SpriteRenderer Sprite;
+        [Header("References")]
+        public List<Shape> Shapes;
 
+        [SerializeField]
+        private Shape _currentShape;
         private bool _allowDoubleClick = false;
 
 
         private void Start()
         {
-            Sprite.color = GenerateRandomColor();
+            _currentShape.SpriteRenderer.color = GenerateRandomColor();
         }
 
 #if  !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
@@ -62,7 +65,7 @@ namespace CodeChallenge
         private void OnDoubleClick()
         {
             Debug.Log("Double click!");
-            Sprite.color = GenerateRandomColor();
+            _currentShape.SpriteRenderer.color = GenerateRandomColor();
         }
 
         private Color GenerateRandomColor()
@@ -72,6 +75,21 @@ namespace CodeChallenge
             float b = UnityEngine.Random.Range(0f, 1f);
 
             return new Color(r, g, b);
+        }
+
+        public void SwitchShape(ShapeType shapeType)
+        {
+            Shape shape = Shapes.Find(x => x.ShapeType.Equals(shapeType));
+            if(shape == null)
+            {
+                Debug.LogError($"Could not find shape type {shapeType}");
+            }
+            else
+            {
+                _currentShape.gameObject.SetActive(false);
+                shape.gameObject.SetActive(true);
+                _currentShape = shape;
+            }
         }
     }
 }
