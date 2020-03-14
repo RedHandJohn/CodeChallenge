@@ -102,7 +102,7 @@ namespace CodeChallenge
 
         private void SetShapeColor()
         {
-            _currentShape.SpriteRenderer.color = Util.GenerateRandomColor();
+            _currentShape.SpriteRenderer.color = UnityEngine.Random.ColorHSV();
         }
 
         private void PlaySfx()
