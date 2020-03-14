@@ -6,6 +6,7 @@ namespace CodeChallenge
     public class Manager : MonoBehaviour
     {
         public ShapeController Shape;
+        public GameObject MaskedImage;
 
         public void OnShapeButtonClicked(int shapeType)
         {
@@ -17,6 +18,11 @@ namespace CodeChallenge
             {
                 Debug.LogError($"Tried to pass invalid shape type. Int value {shapeType}");
             }
+        }
+
+        public void OnMaskedImageToggle(bool toggle)
+        {
+            MaskedImage.SetActive(toggle);
         }
     }
 }

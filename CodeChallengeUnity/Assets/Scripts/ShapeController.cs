@@ -63,6 +63,9 @@ namespace CodeChallenge
         }
 #endif
 
+        /// <summary>
+        /// Called as Animation Event inside DoubleClickAnim clip
+        /// </summary>
         private void OnDoubleClick()
         {
             Debug.Log("Double click!");

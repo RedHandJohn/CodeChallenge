@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 83166376971322931, guid: 6fe8b5c2151bcbc4890f27df94ebf609,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d252b91ef8083f44b2a0cf2428da83c,
+        type: 3}
     - target: {fileID: 279122383803238753, guid: 6fe8b5c2151bcbc4890f27df94ebf609,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -46,7 +52,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: df20339e6b96c61459b7944b16606d95,
+      objectReference: {fileID: 21300000, guid: 4d252b91ef8083f44b2a0cf2428da83c,
         type: 3}
     - target: {fileID: 1857979080292528301, guid: 6fe8b5c2151bcbc4890f27df94ebf609,
         type: 3}
